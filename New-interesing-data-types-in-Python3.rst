@@ -3,7 +3,7 @@ New interesting data structures in Python 3
 
 Python 3 is no longer new. In fact, recently, it was celebrated that it's 3000 days old :). After quite some wait, Python 3's uptake is dramatically on the rise, and I think it is therefore time to take a look at some data structures that Python 3 offers, but that are not available in Python 2. 
 
-I will take a look at ``types.MappingProxyType``, ``typing.NamedTuple`` and ``types.SimpleNamespace``.
+I will take a look at ``types.MappingProxyType``, ``typing.NamedTuple`` and ``types.SimpleNamespace``, all of which are new to Python 3.
 
 ``types.MappingProxyType``
 -------------------------
@@ -63,12 +63,12 @@ Note that while ``read_only`` is read-only, it is not immutable, so if you chang
 
 In comparions to ``collections.namedtuple``, ``typing.NamedTuple`` gives you:
 
- - nicer syntax compared to the cluncy function-based syntax
- - inheritance
- - type hints
- - default values (python >= 3.6.1)
+- nicer syntax
+- inheritance
+- type hints
+- default values (python >= 3.6.1)
 
-See an example below: 
+See an example below:
 
 .. code-block :: python
     
@@ -84,7 +84,7 @@ See an example below:
     Student(name='Tommy Johnson', address='Main street', age=22, sex='M')
 
 
-I like the subclassing syntax compared to the old namedtuple syntax, and find this very readable.
+I like the subclassing syntax compared to the old function-based syntax, and find this very readable.
 
 Note that we're really having a tuple here, not a normal class instance:
 
@@ -95,7 +95,7 @@ Note that we're really having a tuple here, not a normal class instance:
     >>> tommy[0]
     'Tommy Johnson' 
 
-A more advanced example, subclassing ``Student`` and using default values (note: default values require Python 3.6.**1**):
+A more advanced example, subclassing ``Student`` and using default values (note: default values require Python >= **3.6.1**):
 
 .. code-block :: python
     
@@ -103,14 +103,14 @@ A more advanced example, subclassing ``Student`` and using default values (note:
     >>>    sex: str = 'M'  # default value, requires Python >= 3.6.1 
     
     >>> Student(name='Tommy Johnson', address='Main street', age=22)
-    Student(name='Tommy Johnson', address='Main street', age=22, sex='M')
+    Student(name='Tommy Johnson', address='Main street', age=22, sex='M')  # note that sex has a defaults to 'M'
 
-In short, this modern version of namedtuples is just super-nice, and will no doubt become the standard namedtuple variations in the future.
+In short, this modern version of namedtuples is just super-nice, and will no doubt become the standard namedtuple variation in the future.
 
 ``types.SimpleNamespace``
 -------------------------
  
-``types.SimpleNamespace`` (https://docs.python.org/3/library/types.html#types.SimpleNamespace) is a simple class that provides attribute access to its namespace, as well as a meaningful repr. It was added in Python 3.3.
+``types.SimpleNamespace`` is a simple class that provides attribute access to its namespace, as well as a meaningful repr. It was added in Python 3.3.
 
 .. code-block :: python
     
@@ -124,6 +124,9 @@ In short, this modern version of namedtuples is just super-nice, and will no dou
 
 In short, ``types.SimpleNamespace`` is just a ultrasimple class, allowing setting, changing and deleting attributes and providing a nice repr output string. I sometimes use it as an easier-to-read-and-write alternative to ``dict``.
 
+See the `types.SimpleNamespace docs'__ for more details.
+
+__ https://docs.python.org/3/library/types.html#types.SimpleNamespace
 
 .. _docs: https://docs.python.org/3/library/types.html#types.MappingProxyType
 .. _typingNamedTuple: https://docs.python.org/3/library/typing.html#typing.NamedTuple
