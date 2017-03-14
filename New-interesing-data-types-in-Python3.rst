@@ -65,14 +65,14 @@ This is something to be aware of.
 
 ``typing.NamedTuple`` is a supercharged version of the venerable ``collections.namedtuple`` and while it was added in Python 3.5, it really came into its own in Python 3.6.
 
-In comparions to ``collections.namedtuple``, ``typing.NamedTuple`` gives you:
+In comparions to ``collections.namedtuple``, ``typing.NamedTuple`` gives you (Python >= 3.6):
 
 - nicer syntax
 - inheritance
-- type hints
+- type annotations
 - default values (python >= 3.6.1)
 
-See an example below:
+See an ``typing.NamedTuple`` example below:
 
 .. code-block :: python
     
