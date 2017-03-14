@@ -1,14 +1,14 @@
 New interesting data Structures in Python3
 ------------------------------------
 
-Python 3 is no longer a new version of Python. In fact, recently, it was celebrated that it's 3000 days old :). Pyrhon 3's uptake is also dramatically rising these days. I think it is therefore time to take a look at some data structures that Python 3 offers that are not available in Python 2. 
+Python 3 is no longer a new version of Python. In fact, recently, it was celebrated that it's 3000 days old :). Python 3's uptake is also dramatically rising these days. I think it is therefore time to take a look at some data structures that Python 3 offers, but that are not available in Python 2. 
 
 I will take a look at ``types.MappingProxyType``, ``types.SimpleNamespace`` and ``typing.NamedTuple``.
 
 ``types.MappingProxyType``
 -------------------------
 
-``types.MappingProxyType``[https://docs.python.org/3/library/types.html#types.MappingProxyType] is used as a read-only dict and was added in Python 3.3.
+``types.MappingProxyType`` [https://docs.python.org/3/library/types.html#types.MappingProxyType] is used as a read-only dict and was added in Python 3.3.
 
 That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated. This is perfect it you're handing a dict over to a consumer, and you want to assure that the consumer is not unintentionally changing the original data. This in in practical use often very useful, as consumers changing passed-in data structures are often the most difficult to debug code.
 
@@ -52,7 +52,7 @@ Note that while ``read_only`` is read-only, it is not immutable, so if you chang
 ``types.SimpleNamespace``
 -------------------------
  
-``types.SimpleNamespace``(https://docs.python.org/3/library/types.html#types.SimpleNamespace) is a simple class that provides attribute access to its namespace, as well as a meaningful repr. It was added in Python 3.3.
+``types.SimpleNamespace`` (https://docs.python.org/3/library/types.html#types.SimpleNamespace) is a simple class that provides attribute access to its namespace, as well as a meaningful repr. It was added in Python 3.3.
 
 .. code-block :: python
     
