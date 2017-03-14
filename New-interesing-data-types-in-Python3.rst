@@ -12,7 +12,7 @@ We will take a look at ``types.MappingProxyType``, ``typing.NamedTuple`` and ``t
 
 ``types.MappingProxyType`` is used as a read-only dict and was added in Python 3.3. See docs_ for details.
 
-That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if the user wants to make changes, he has to deliberately make a copy, and make changes to that copy. This is perfect if you're handing a ``dict`` over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. In practical use this is often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs that are difficult to track down.
+That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if the user wants to make changes, he has to deliberately make a copy, and make changes to that copy. This is perfect if you're handing a ``dict`` -liek structure over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. In practical use this is often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs in your code that are difficult to track down.
 
 A ``types.MappingProxyType`` example:
 
@@ -26,7 +26,7 @@ A ``types.MappingProxyType`` example:
     >>> read_only['a'] = 3
     TypeError: 'mappingproxy' object does not support item assignment
       
-Note that ``read_only`` cannot be directly changed. So, if you want to deliver data dicts to different functions or threads and want to ensure that a function is not changing data needed for another function, you can just deliver a mappingproxy object to all functions, rather than the original ``dict``, and the data dict cannot be changed unintentionally:
+Note that ``read_only`` cannot be directly changed. So, if you want to deliver data dicts to different functions or threads and want to ensure that a function is not changing data needed for another function, you can just deliver a ``MappingProxyType`` object to all functions, rather than the original ``dict``, and the data dict cannot be changed unintentionally:
 
 .. code-block :: python
     
@@ -126,7 +126,7 @@ In short, this modern version of namedtuples is just super-nice, and will no dou
     >>> data
     namespace(a=1, b=2, c=3)
 
-In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while also provides a nice repr output string. I sometimes use it as an easier-to-read-and-write alternative to ``dict``.
+In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while also provides a nice repr output string. I sometimes use it as an easier-to-read-and-write alternative to ``dict`` or I subclass it to get the flexible instantiation and repr output for free.
 
 I hope you enjoyed this little walkthrough of some new data structures in Python 3.
 
