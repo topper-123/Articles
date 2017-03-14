@@ -12,7 +12,7 @@ I will take a look at ``types.MappingProxyType``, ``typing.NamedTuple`` and ``ty
 
 That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if the user wants to make changes, he has to very deliberately make a copy, and change the copy. This is perfect it you're handing a ``dict`` over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. This in in practical use often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs that are difficult to track down.
 
-An ``types.MappingProxyType`` example:
+A ``types.MappingProxyType`` example:
 
 .. code-block :: python
 
@@ -38,14 +38,14 @@ Note that ``read_only`` cannot be directly changed. So, if you want to deliver d
     >>> data
     data = {'a': 10, 'b':2}  # note that data['a'] has changed as an side-effect of calling my_threaded_func
 
-if you send in a ``mappingproxy`` to ``my_threaded_func`` however, attempts to change the dict will result in errors:
+if you send in a ``mappingproxy`` to ``my_threaded_func`` instead, however, attempts to change the dict will result in errors:
 
 .. code-block :: python
 
     >>> my_threaded_func(MappingProxyType(data))
     TypeError: 'mappingproxy' object does not support item deletion
     
-We therefore have to correct ``my_threaded_func`` to copy ``in_dict`` before altering it to avoid this error. This is great, as it helps avoid a whole class of difficult-to-find bugs.
+We now know that we have to correct ``my_threaded_func`` to first copy ``in_dict`` and alter thf copied dict to avoid this error. This feature is great, as it helps us avoid a whole class of difficult-to-find bugs.
 
 Note that while ``read_only`` is read-only, it is not immutable, so if you change ``data``, ``read_only`` will change too:
  
@@ -84,7 +84,7 @@ See an example below:
     Student(name='Tommy Johnson', address='Main street', age=22, sex='M')
 
 
-I like the subclassing syntax compared to the old function-based syntax, and find this very readable.
+I like the subclassing syntax compared to the old function-based syntax, and find this much more readable.
 
 Note that we're really having a tuple here, not a normal class instance:
 
@@ -122,11 +122,7 @@ In short, this modern version of namedtuples is just super-nice, and will no dou
     >>> data
     namespace(a=1, b=2, c=3)
 
-In short, ``types.SimpleNamespace`` is just a ultrasimple class, allowing setting, changing and deleting attributes and providing a nice repr output string. I sometimes use it as an easier-to-read-and-write alternative to ``dict``.
-
-See the `types.SimpleNamespace docs'__ for more details.
-
-__ https://docs.python.org/3/library/types.html#types.SimpleNamespace
+In short, ``types.SimpleNamespace`` is just a ultrasimple class, allowing you to set, change and delete attributes while also provides a nice repr output string. I sometimes use it as an easier-to-read-and-write alternative to ``dict``.
 
 .. _docs: https://docs.python.org/3/library/types.html#types.MappingProxyType
 .. _typingNamedTuple: https://docs.python.org/3/library/typing.html#typing.NamedTuple
