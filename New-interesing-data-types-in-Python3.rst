@@ -3,7 +3,7 @@ New interesting data structures in Python 3
 
 Python 3 is no longer new.
 
-In fact, recently, it's 3000 day birthday_ was celebrated :). After quite some wait, Python 3's uptake is dramatically on the rise now, and I think it is therefore time to take a look at some data structures that Python 3 offers, but that are not available in Python 2. 
+In fact, recently, its 3000 day birthday_ was celebrated :). After quite some wait, Python 3's uptake is dramatically on the rise now, and I think it is therefore time to take a look at some data structures that Python 3 offers, but that are not available in Python 2. 
 
 We will take a look at ``types.MappingProxyType``, ``typing.NamedTuple`` and ``types.SimpleNamespace``, all of which are new to Python 3.
 
