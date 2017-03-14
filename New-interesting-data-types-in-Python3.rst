@@ -40,7 +40,7 @@ Note that ``read_only`` cannot be directly changed. So, if you want to deliver d
     >>> data
     data = {'a': 10, 'b':2}  # note that data['a'] has changed as an side-effect of calling my_threaded_func
 
-if you send in a ``mappingproxy`` to ``my_threaded_func`` instead, however, attempts to change the dict will result in an error:
+If you send in a ``mappingproxy`` to ``my_threaded_func`` instead, however, attempts to change the dict will result in an error:
 
 .. code-block :: python
 
@@ -88,7 +88,7 @@ See an ``typing.NamedTuple`` example below:
     Student(name='Tommy Johnson', address='Main street', age=22, sex='M')
 
 
-I like the subclassing syntax compared to the old function-based syntax, and find this much more readable.
+I like the class-based syntax compared to the old function-based syntax, and find this much more readable.
 
 Note that we're really having a tuple here, not a normal class instance:
 
