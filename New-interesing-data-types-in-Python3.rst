@@ -1,16 +1,18 @@
 New interesting data structures in Python 3
 =============================================
 
-Python 3 is no longer new. In fact, recently, it was celebrated that it's 3000 days old :). After quite some wait, Python 3's uptake is dramatically on the rise, and I think it is therefore time to take a look at some data structures that Python 3 offers, but that are not available in Python 2. 
+Python 3 is no longer new.
 
-I will take a look at ``types.MappingProxyType``, ``typing.NamedTuple`` and ``types.SimpleNamespace``, all of which are new to Python 3.
+In fact, recently, it's 3000 days birthday was celebrated :). After quite some wait, Python 3's uptake is dramatically on the rise, and I think it is therefore time to take a look at some data structures that Python 3 offers, but that are not available in Python 2. 
+
+We will take a look at ``types.MappingProxyType``, ``typing.NamedTuple`` and ``types.SimpleNamespace``, all of which are new to Python 3.
 
 ``types.MappingProxyType``
 -------------------------
 
 ``types.MappingProxyType`` is used as a read-only dict and was added in Python 3.3. See docs_ for details.
 
-That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if the user wants to make changes, he has to very deliberately make a copy, and change the copy. This is perfect it you're handing a ``dict`` over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. This in in practical use often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs that are difficult to track down.
+That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if the user wants to make changes, he has to deliberately make a copy, and make changes to that copy. This is perfect if you're handing a ``dict`` over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. In practical use this is often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs that are difficult to track down.
 
 A ``types.MappingProxyType`` example:
 
@@ -24,13 +26,13 @@ A ``types.MappingProxyType`` example:
     >>> read_only['a'] = 3
     TypeError: 'mappingproxy' object does not support item assignment
       
-Note that ``read_only`` cannot be directly changed. So, if you want to deliver data dicts to different functions or threads and want to ensure that a function is not changing data used for another function, you can just deliver a mappingproxy object to all functions, rather than the original ``dict``, and the data dict cannot be changed unintentionally:
+Note that ``read_only`` cannot be directly changed. So, if you want to deliver data dicts to different functions or threads and want to ensure that a function is not changing data needed for another function, you can just deliver a mappingproxy object to all functions, rather than the original ``dict``, and the data dict cannot be changed unintentionally:
 
 .. code-block :: python
     
     >>> def my_threaded_func(in_dict):
     >>>    ...
-    >>>    in_dict['a'] *= 10  # oops, this will change the sent-in dict, leading to subtle bugs
+    >>>    in_dict['a'] *= 10  # oops, a bug, this will change the sent-in dict
     
     ...
     # in some function/thread:
@@ -38,16 +40,16 @@ Note that ``read_only`` cannot be directly changed. So, if you want to deliver d
     >>> data
     data = {'a': 10, 'b':2}  # note that data['a'] has changed as an side-effect of calling my_threaded_func
 
-if you send in a ``mappingproxy`` to ``my_threaded_func`` instead, however, attempts to change the dict will result in errors:
+if you send in a ``mappingproxy`` to ``my_threaded_func`` instead, however, attempts to change the dict will result in an error:
 
 .. code-block :: python
 
     >>> my_threaded_func(MappingProxyType(data))
     TypeError: 'mappingproxy' object does not support item deletion
     
-We now know that we have to correct ``my_threaded_func`` to first copy ``in_dict`` and alter thf copied dict to avoid this error. This feature is great, as it helps us avoid a whole class of difficult-to-find bugs.
+We now see that we have to correct ``my_threaded_func`` to first copy ``in_dict`` and alter the copied dict to avoid this error. This feature is great, as it helps us avoid a whole class of difficult-to-find bugs.
 
-Note that while ``read_only`` is read-only, it is not immutable, so if you change ``data``, ``read_only`` will change too:
+Note though that while ``read_only`` is read-only, it is not immutable, so if you change ``data``, ``read_only`` will change too:
  
 .. code-block :: python
     
@@ -55,6 +57,8 @@ Note that while ``read_only`` is read-only, it is not immutable, so if you chang
     >>> data['c'] = 4
     >>> read_only  # changed!
     mappingproxy({'a': 3, 'b': 2, 'c': 4})
+
+This is something to be aware of.
 
 ``typing.NamedTuple``
 ---------------------
@@ -122,7 +126,9 @@ In short, this modern version of namedtuples is just super-nice, and will no dou
     >>> data
     namespace(a=1, b=2, c=3)
 
-In short, ``types.SimpleNamespace`` is just a ultrasimple class, allowing you to set, change and delete attributes while also provides a nice repr output string. I sometimes use it as an easier-to-read-and-write alternative to ``dict``.
+In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while also provides a nice repr output string. I sometimes use it as an easier-to-read-and-write alternative to ``dict``.
+
+I hope you enjoyed this little walkthrough of some new data structures in Python 3.
 
 .. _docs: https://docs.python.org/3/library/types.html#types.MappingProxyType
 .. _typingNamedTuple: https://docs.python.org/3/library/typing.html#typing.NamedTuple
