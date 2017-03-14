@@ -126,7 +126,7 @@ In short, this modern version of namedtuples is just super-nice, and will no dou
     >>> data
     namespace(a=1, b=2, c=3)
 
-In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while also provides a nice repr output string. I sometimes use it as an easier-to-read-and-write alternative to ``dict`` or I subclass it to get the flexible instantiation and repr output for free.
+In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while  it also provides a nice repr output string. I sometimes use this as an easier-to-read-and-write alternative to ``dict`` or I subclass it to get the flexible instantiation and repr output for free.
 
 I hope you enjoyed this little walkthrough of some new data structures in Python 3.
 
