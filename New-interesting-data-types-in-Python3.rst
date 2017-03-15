@@ -26,7 +26,9 @@ A ``types.MappingProxyType`` example:
     >>> read_only['a'] = 3
     TypeError: 'mappingproxy' object does not support item assignment
       
-Note that ``read_only`` cannot be directly changed. So, if you want to deliver data dicts to different functions or threads and want to ensure that a function is not changing data needed for another function, you can just deliver a ``MappingProxyType`` object to all functions, rather than the original ``dict``, and the data dict cannot be changed unintentionally:
+Note that teh example shows that the ``read_only`` cannot be directly changed. 
+
+So, if you want to deliver data dicts to different functions or threads and want to ensure that a function is not changing data needed for another function, you can just deliver a ``MappingProxyType`` object to all functions, rather than the original ``dict``, and the data dict cannot be changed unintentionally. An example illustrates this usage of ``MappingProxyType``:
 
 .. code-block :: python
     
