@@ -122,7 +122,7 @@ In short, this modern version of namedtuples is just super-nice, and will no dou
     >>> data = SimpleNamespace(a=1, b=2)
     >>> data
     namespace(a=1, b=2)
-    data.c = 3
+    >>> data.c = 3
     >>> data
     namespace(a=1, b=2, c=3)
 
