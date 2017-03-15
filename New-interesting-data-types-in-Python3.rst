@@ -26,9 +26,9 @@ A ``types.MappingProxyType`` example:
     >>> read_only['a'] = 3
     TypeError: 'mappingproxy' object does not support item assignment
       
-Note that teh example shows that the ``read_only`` cannot be directly changed. 
+Note that the example shows that the ``read_only`` object cannot be directly changed. 
 
-So, if you want to deliver data dicts to different functions or threads and want to ensure that a function is not changing data needed for another function, you can just deliver a ``MappingProxyType`` object to all functions, rather than the original ``dict``, and the data dict cannot be changed unintentionally. An example illustrates this usage of ``MappingProxyType``:
+So, if you want to deliver data dicts to different functions or threads and want to ensure that a function is not changing data that is also used by another function, you can just deliver a ``MappingProxyType`` object to all functions, rather than the original ``dict``, and the data dict now cannot be changed unintentionally. An example illustrates this usage of ``MappingProxyType``:
 
 .. code-block :: python
     
@@ -49,7 +49,7 @@ If you send in a ``mappingproxy`` to ``my_threaded_func`` instead, however, atte
     >>> my_threaded_func(MappingProxyType(data))
     TypeError: 'mappingproxy' object does not support item deletion
     
-We now see that we have to correct ``my_threaded_func`` to first copy ``in_dict`` and alter the copied dict to avoid this error. This feature is great, as it helps us avoid a whole class of difficult-to-find bugs.
+We now see that we have to correct the code in ``my_threaded_func`` to first copy ``in_dict`` and then alter the copied dict to avoid this error. This feature of ``mappingproxy`` is great, as it helps us avoid a whole class of difficult-to-find bugs.
 
 Note though that while ``read_only`` is read-only, it is not immutable, so if you change ``data``, ``read_only`` will change too:
  
