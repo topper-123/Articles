@@ -106,8 +106,8 @@ A more advanced example, subclassing ``Student`` and using default values (note:
     >>> class MaleStudent(Student):
     >>>    sex: str = 'M'  # default value, requires Python >= 3.6.1 
     
-    >>> Student(name='Tommy Johnson', address='Main street', age=22)
-    Student(name='Tommy Johnson', address='Main street', age=22, sex='M')  # note that sex defaults to 'M'
+    >>> MaleStudent(name='Tommy Johnson', address='Main street', age=22)
+    MaleStudent(name='Tommy Johnson', address='Main street', age=22, sex='M')  # note that sex defaults to 'M'
 
 In short, this modern version of namedtuples is just super-nice, and will no doubt become the standard namedtuple variation in the future.
 
