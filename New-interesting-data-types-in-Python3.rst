@@ -8,7 +8,7 @@ We will take a look at ``typing.NamedTuple``, ``types.MappingProxyType`` and ``t
 ``typing.NamedTuple``
 ---------------------
 
-``typing.NamedTuple`` is a supercharged version of the venerable ``collections.namedtuple`` and while it was added in Python 3.5, it really came into its own in Python 3.6. See the `docs <https://docs.python.org/3/library/typing.html#typing.NamedTuple>`_ for details.
+``typing.NamedTuple`` is a supercharged version of the venerable ``collections.namedtuple`` and while it was added in Python 3.5, it really came into its own in Python 3.6.
 
 In comparions to ``collections.namedtuple``, ``typing.NamedTuple`` gives you (Python >= 3.6):
 
@@ -16,8 +16,9 @@ In comparions to ``collections.namedtuple``, ``typing.NamedTuple`` gives you (Py
 - inheritance
 - type annotations
 - default values (python >= 3.6.1)
+- equally fast
 
-See a ``typing.NamedTuple`` example below:
+See an illustrative ``typing.NamedTuple`` example below:
 
 .. code-block :: python
     
@@ -35,7 +36,7 @@ See a ``typing.NamedTuple`` example below:
 
 I like the class-based syntax compared to the old function-based syntax, and find this much more readable.
 
-Note that we're really having a tuple here, not a normal class instance:
+Note that we're do really have a tuple here, not a normal class instance:
 
 .. code-block :: python
     
@@ -56,10 +57,12 @@ A more advanced example, subclassing ``Student`` and using default values (note:
 
 In short, this modern version of namedtuples is just super-nice, and will no doubt become the standard namedtuple variation in the future.
 
+See the `docs <https://docs.python.org/3/library/typing.html#typing.NamedTuple>`_ for further details.
+
 ``types.MappingProxyType``
 -------------------------
 
-``types.MappingProxyType`` is used as a read-only dict and was added in Python 3.3. See the `docs <https://docs.python.org/3/library/types.html#types.MappingProxyType>`_ for details.
+``types.MappingProxyType`` is used as a read-only dict and was added in Python 3.3.
 
 That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if the user wants to make changes, he has to deliberately make a copy, and make changes to that copy. This is perfect if you're handing a ``dict`` -like structure over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. In practical use this is often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs in your code that are difficult to track down.
 
@@ -109,7 +112,7 @@ Note though that while ``read_only`` is read-only, it is not immutable, so if yo
     >>> read_only  # changed!
     mappingproxy({'a': 3, 'b': 2, 'c': 4})
 
-This is something to be aware of.
+This is something to be aware of. See the `docs <https://docs.python.org/3/library/types.html#types.MappingProxyType>`_ for details.
 
 ``types.SimpleNamespace``
 -------------------------
