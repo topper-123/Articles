@@ -20,7 +20,7 @@ A ``types.MappingProxyType`` example:
 
     >>> from  types import MappingProxyType
     >>> data = {'a': 1, 'b':2}
-    >>> read_only = MappingProxyType(a)
+    >>> read_only = MappingProxyType(data)
     >>> del read_only['a']
     TypeError: 'mappingproxy' object does not support item deletion
     >>> read_only['a'] = 3
