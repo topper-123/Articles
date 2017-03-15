@@ -1,16 +1,65 @@
 New interesting data structures in Python 3
 =============================================
 
-Python 3 is no longer new.
+Python 3's uptake is dramatically on the rise rise these days, and I think therefore that it is a good time to take a look at some data structures that Python 3 offers, but that are not available in Python 2.
 
-In fact, recently, its 3000 day birthday_ was celebrated :). After quite some wait, Python 3's uptake is dramatically on the rise now, and I think it is therefore time to take a look at some data structures that Python 3 offers, but that are not available in Python 2. 
+We will take a look at ``typing.NamedTuple``, ``types.MappingProxyType`` and ``types.SimpleNamespace``, all of which are new to Python 3.
 
-We will take a look at ``types.MappingProxyType``, ``typing.NamedTuple`` and ``types.SimpleNamespace``, all of which are new to Python 3.
+``typing.NamedTuple``
+---------------------
+
+``typing.NamedTuple`` is a supercharged version of the venerable ``collections.namedtuple`` and while it was added in Python 3.5, it really came into its own in Python 3.6. See the `docs <https://docs.python.org/3/library/typing.html#typing.NamedTuple>`_ for details.
+
+In comparions to ``collections.namedtuple``, ``typing.NamedTuple`` gives you (Python >= 3.6):
+
+- nicer syntax
+- inheritance
+- type annotations
+- default values (python >= 3.6.1)
+
+See a ``typing.NamedTuple`` example below:
+
+.. code-block :: python
+    
+    >>> from typing import NamedTuple
+    >>> class Student(NamedTuple):
+    >>>    name: str
+    >>>    address: str
+    >>>    age: int
+    >>>    sex: str
+    
+    >>> tommy = Student(name='Tommy Johnson', address='Main street', age=22, sex='M')
+    >>> tommy
+    Student(name='Tommy Johnson', address='Main street', age=22, sex='M')
+
+
+I like the class-based syntax compared to the old function-based syntax, and find this much more readable.
+
+Note that we're really having a tuple here, not a normal class instance:
+
+.. code-block :: python
+    
+    >>> isinstance(tommy, tuple)
+    True
+    >>> tommy[0]
+    'Tommy Johnson' 
+
+A more advanced example, subclassing ``Student`` and using default values (note: default values require Python >= **3.6.1**):
+
+.. code-block :: python
+    
+    >>> class MaleStudent(Student):
+    >>>    sex: str = 'M'  # default value, requires Python >= 3.6.1 
+    
+    >>> MaleStudent(name='Tommy Johnson', address='Main street', age=22)
+    MaleStudent(name='Tommy Johnson', address='Main street', age=22, sex='M')  # note that sex defaults to 'M'
+
+In short, this modern version of namedtuples is just super-nice, and will no doubt become the standard namedtuple variation in the future.
 
 ``types.MappingProxyType``
 -------------------------
 
-``types.MappingProxyType`` is used as a read-only dict and was added in Python 3.3. See docs_ for details.
+``types.MappingProxyType`` is used as a read-only dict and was added in Python 3.3. See the `docs <https://docs.python.org/3/library/types.html#types.MappingProxyType>`_ for details.
 
 That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if the user wants to make changes, he has to deliberately make a copy, and make changes to that copy. This is perfect if you're handing a ``dict`` -like structure over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. In practical use this is often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs in your code that are difficult to track down.
 
@@ -62,61 +111,10 @@ Note though that while ``read_only`` is read-only, it is not immutable, so if yo
 
 This is something to be aware of.
 
-``typing.NamedTuple``
----------------------
-
-``typing.NamedTuple`` is a supercharged version of the venerable ``collections.namedtuple`` and while it was added in Python 3.5, it really came into its own in Python 3.6.
-
-In comparions to ``collections.namedtuple``, ``typing.NamedTuple`` gives you (Python >= 3.6):
-
-- nicer syntax
-- inheritance
-- type annotations
-- default values (python >= 3.6.1)
-
-See a ``typing.NamedTuple`` example below:
-
-.. code-block :: python
-    
-    >>> from typing import NamedTuple
-    >>> class Student(NamedTuple):
-    >>>    name: str
-    >>>    address: str
-    >>>    age: int
-    >>>    sex: str
-    
-    >>> tommy = Student(name='Tommy Johnson', address='Main street', age=22, sex='M')
-    >>> tommy
-    Student(name='Tommy Johnson', address='Main street', age=22, sex='M')
-
-
-I like the class-based syntax compared to the old function-based syntax, and find this much more readable.
-
-Note that we're really having a tuple here, not a normal class instance:
-
-.. code-block :: python
-    
-    >>> isinstance(tommy, tuple)
-    True
-    >>> tommy[0]
-    'Tommy Johnson' 
-
-A more advanced example, subclassing ``Student`` and using default values (note: default values require Python >= **3.6.1**):
-
-.. code-block :: python
-    
-    >>> class MaleStudent(Student):
-    >>>    sex: str = 'M'  # default value, requires Python >= 3.6.1 
-    
-    >>> MaleStudent(name='Tommy Johnson', address='Main street', age=22)
-    MaleStudent(name='Tommy Johnson', address='Main street', age=22, sex='M')  # note that sex defaults to 'M'
-
-In short, this modern version of namedtuples is just super-nice, and will no doubt become the standard namedtuple variation in the future.
-
 ``types.SimpleNamespace``
 -------------------------
  
-``types.SimpleNamespace`` is a simple class that provides attribute access to its namespace, as well as a meaningful repr. It was added in Python 3.3.
+``types.SimpleNamespace`` is a simple class that provides attribute access to its namespace, as well as a meaningful repr. It was added in Python 3.3. See the `docs <https://docs.python.org/3/library/types.html#types.SimpleNamespace>`_ for details.
 
 .. code-block :: python
     
@@ -153,5 +151,4 @@ Conclusion
 I hope you enjoyed this little walkthrough of some new data structures in Python 3.
 
 .. _birthday: https://www.reddit.com/r/Python/comments/5v0tt6/python_3_created_via_pep_3000_is_exactly_3000/
-.. _docs: https://docs.python.org/3/library/types.html#types.MappingProxyType
 .. _typingNamedTuple: https://docs.python.org/3/library/typing.html#typing.NamedTuple
