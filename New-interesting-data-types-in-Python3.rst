@@ -76,7 +76,7 @@ See an ``typing.NamedTuple`` example below:
 
 .. code-block :: python
     
-    >>> from typings import NamedTuple
+    >>> from typing import NamedTuple
     >>> class Student(NamedTuple):
     >>>    name: str
     >>>    address: str
