@@ -36,7 +36,7 @@ See an illustrative ``typing.NamedTuple`` example below:
 
 I like the class-based syntax compared to the old function-based syntax, and find this much more readable.
 
-Note that we're do really have a tuple here, not a normal class instance:
+Note that we do really have a tuple here, not a normal class instance:
 
 .. code-block :: python
     
