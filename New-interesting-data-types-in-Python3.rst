@@ -74,7 +74,7 @@ In comparions to ``collections.namedtuple``, ``typing.NamedTuple`` gives you (Py
 - type annotations
 - default values (python >= 3.6.1)
 
-See an ``typing.NamedTuple`` example below:
+See a ``typing.NamedTuple`` example below:
 
 .. code-block :: python
     
