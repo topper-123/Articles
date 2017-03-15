@@ -128,6 +128,26 @@ In short, this modern version of namedtuples is just super-nice, and will no dou
 
 In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while  it also provides a nice repr output string. I sometimes use this as an easier-to-read-and-write alternative to ``dict`` or I subclass it to get the flexible instantiation and repr output for free.
 
+
+.. code-block :: python
+    
+    >>> import random
+    >>> class DataBag(SimpleNamespace):
+    >>>    def choice(self):
+    >>>        items = self.__dict__.items()
+    >>>        return random.choice(tuple(items))
+  
+    >>> data_bag = DataBag(a=1, b=2)
+    >>> data_bag
+    DataBag(a=1, b=2)
+    >>> data_bag.choice()
+    (b, 2)
+    
+This subclassing of  ``types.SimpleNamespace`` is probably not really revolutionary, but it can save on a few lines of text in some common cases, which is nice.
+
+Conclusion
+------------
+
 I hope you enjoyed this little walkthrough of some new data structures in Python 3.
 
 .. _birthday: https://www.reddit.com/r/Python/comments/5v0tt6/python_3_created_via_pep_3000_is_exactly_3000/
