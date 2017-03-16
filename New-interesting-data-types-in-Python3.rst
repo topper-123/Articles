@@ -92,7 +92,7 @@ See a ``typing.NamedTuple`` example below:
 
 I like the class-based syntax compared to the old function-based syntax, and find this much more readable.
 
-Note that we're really having a tuple here, not a normal class instance:
+The ``Student`` class is a subclass of ``tuple``, so it can be handled like any normal ``tuple``:
 
 .. code-block :: python
     
