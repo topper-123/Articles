@@ -117,7 +117,7 @@ This is something to be aware of. See the `docs <https://docs.python.org/3/libra
 ``types.SimpleNamespace``
 -------------------------
  
-``types.SimpleNamespace`` is a simple class that provides attribute access to its namespace, as well as a meaningful repr. It was added in Python 3.3. See the `docs <https://docs.python.org/3/library/types.html#types.SimpleNamespace>`_ for details.
+``types.SimpleNamespace`` is a simple class that provides attribute access to its namespace, as well as a meaningful repr. It was added in Python 3.3.
 
 .. code-block :: python
     
@@ -145,12 +145,11 @@ I sometimes use this as an easier-to-read-and-write alternative to ``dict``, or 
   
     >>> data_bag = DataBag(a=1, b=2)
     >>> data_bag
-    DataBag(a=1, b=2)
-    
+    DataBag(a=1, b=2)  
     >>> data_bag.choice()
     (b, 2)
     
-This subclassing of  ``types.SimpleNamespace`` is  not revolutionary really, but it can save on a few lines of text in some common cases, which is nice.
+This subclassing of  ``types.SimpleNamespace`` is  not revolutionary really, but it can save on a few lines of text in some common cases, which is nice. See the `docs <https://docs.python.org/3/library/types.html#types.SimpleNamespace>`_ for details.
 
 Conclusion
 ------------
