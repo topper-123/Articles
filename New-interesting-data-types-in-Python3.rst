@@ -122,6 +122,7 @@ This is something to be aware of. See the `docs <https://docs.python.org/3/libra
 .. code-block :: python
     
     >>> from types import SimpleNamespace
+    
     >>> data = SimpleNamespace(a=1, b=2)
     >>> data
     namespace(a=1, b=2)
@@ -136,6 +137,7 @@ I sometimes use this as an easier-to-read-and-write alternative to ``dict``, or 
 .. code-block :: python
     
     >>> import random
+    
     >>> class DataBag(SimpleNamespace):
     >>>    def choice(self):
     >>>        items = self.__dict__.items()
@@ -144,6 +146,7 @@ I sometimes use this as an easier-to-read-and-write alternative to ``dict``, or 
     >>> data_bag = DataBag(a=1, b=2)
     >>> data_bag
     DataBag(a=1, b=2)
+    
     >>> data_bag.choice()
     (b, 2)
     
