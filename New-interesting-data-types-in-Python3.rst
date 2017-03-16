@@ -129,8 +129,9 @@ This is something to be aware of. See the `docs <https://docs.python.org/3/libra
     >>> data
     namespace(a=1, b=2, c=3)
 
-In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while  it also provides a nice repr output string. I sometimes use this as an easier-to-read-and-write alternative to ``dict`` or I subclass it to get the flexible instantiation and repr output for free:
+In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while  it also provides a nice repr output string.
 
+I sometimes use this as an easier-to-read-and-write alternative to ``dict``, or I subclass it to get the flexible instantiation and repr output for free:
 
 .. code-block :: python
     
@@ -146,7 +147,7 @@ In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you t
     >>> data_bag.choice()
     (b, 2)
     
-This subclassing of  ``types.SimpleNamespace`` is probably not really revolutionary, but it can save on a few lines of text in some common cases, which is nice.
+This subclassing of  ``types.SimpleNamespace`` is  not revolutionary really, but it can save on a few lines of text in some common cases, which is nice.
 
 Conclusion
 ------------
