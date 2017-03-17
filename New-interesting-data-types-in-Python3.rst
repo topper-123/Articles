@@ -156,5 +156,12 @@ Conclusion
 
 I hope you enjoyed this little walkthrough of some new data structures in Python 3.
 
+
+Translations
+-------------
+
+A `Korean translation of a previous version of this article <https://mnpk.github.io/2017/03/16/python3-data-structure.html>`_ has been made, courtesy of `mnpk <https://mnpk.github.io/about.html>`_. Thanks!
+
+
 .. _birthday: https://www.reddit.com/r/Python/comments/5v0tt6/python_3_created_via_pep_3000_is_exactly_3000/
 .. _typingNamedTuple: https://docs.python.org/3/library/typing.html#typing.NamedTuple
