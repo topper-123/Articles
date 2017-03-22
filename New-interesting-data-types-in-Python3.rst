@@ -12,7 +12,7 @@ We will take a look at ``types.MappingProxyType``, ``typing.NamedTuple`` and ``t
 
 ``types.MappingProxyType`` is used as a read-only dict and was added in Python 3.3. See docs_ for details.
 
-That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if the user wants to make changes, they have to deliberately make a copy, and make changes to that copy. This is perfect if you're handing a ``dict`` -like structure over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. In practical use this is often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs in your code that are difficult to track down.
+That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if users want to make changes, they have to deliberately make a copy, and make changes to that copy. This is perfect if you're handing a ``dict`` -like structure over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. In practical use this is often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs in your code that are difficult to track down.
 
 A ``types.MappingProxyType`` example:
 
