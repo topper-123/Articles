@@ -156,7 +156,12 @@ Conclusion
 
 I hope you enjoyed this little walkthrough of some new data structures in Python 3.
 
+Mentioning in Podcasts
+----------------------
+
+The article has been positively mentioned on the `Python Bytes <https://pythonbytes.fm/episodes/show/18/python-3-has-some-amazing-types-and-you-can-now-constructively-insult-your-shell>`_ podcast at around 6:00. Thanks!
+
 Translations
 -------------
 
-A `Korean translation of a previous version of this article <https://mnpk.github.io/2017/03/16/python3-data-structure.html>`_ has been made, courtesy of `mnpk <https://mnpk.github.io/about.html>`_. Thanks!
+A `Korean translation of this article <https://mnpk.github.io/2017/03/16/python3-data-structure.html>`_ has been made, courtesy of `mnpk <https://mnpk.github.io/about.html>`_. Thanks!
