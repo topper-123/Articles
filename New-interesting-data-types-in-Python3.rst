@@ -156,7 +156,6 @@ Conclusion
 
 I hope you enjoyed this little walkthrough of some new data structures in Python 3.
 
-
 Translations
 -------------
 
