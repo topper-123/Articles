@@ -64,7 +64,7 @@ See the `docs <https://docs.python.org/3/library/typing.html#typing.NamedTuple>`
 
 ``types.MappingProxyType`` is used as a read-only dict and was added in Python 3.3.
 
-That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if users want to make changes, they have to deliberately make a copy, and make changes to that copy. This is perfect if you're handing a ``dict`` -like structure over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. In practical use this is often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs in your code that are difficult to track down.
+That ``types.MappingProxyType`` is read-only means that it can't be directly manipulated and if users want to make changes, they have to deliberately make a copy, and make changes to that copy. This is perfect if you're handing a ``dict`` -like structure over to a data consumer, and you want to ensure that the data consumer is not unintentionally changing the original data. This is often extremely useful, as cases of data consumers changing passed-in data structures leads to very obscure bugs in your code that are difficult to track down.
 
 A ``types.MappingProxyType`` example:
 
@@ -84,24 +84,24 @@ So, if you want to deliver data dicts to different functions or threads and want
 
 .. code-block :: python
     
-    >>> def my_threaded_func(in_dict):
-    >>>    ...
+    >>> def my_func(in_dict):
+    >>>    ...  # lots of code
     >>>    in_dict['a'] *= 10  # oops, a bug, this will change the sent-in dict
     
     ...
     # in some function/thread:
-    >>> my_threaded_func(data)
+    >>> my_func(data)
     >>> data
-    data = {'a': 10, 'b':2}  # note that data['a'] has changed as an side-effect of calling my_threaded_func
+    data = {'a': 10, 'b':2}  # oops, note that data['a'] now has changed as an side-effect of calling my_threaded_func
 
-If you send in a ``mappingproxy`` to ``my_threaded_func`` instead, however, attempts to change the dict will result in an error:
+If you send in a ``mappingproxy`` to ``my_func`` instead, however, attempts to change the dict will result in an error:
 
 .. code-block :: python
 
-    >>> my_threaded_func(MappingProxyType(data))
+    >>> my_func(MappingProxyType(data))
     TypeError: 'mappingproxy' object does not support item deletion
     
-We now see that we have to correct the code in ``my_threaded_func`` to first copy ``in_dict`` and then alter the copied dict to avoid this error. This feature of ``mappingproxy`` is great, as it helps us avoid a whole class of difficult-to-find bugs.
+We now see that we have to correct the code in ``my_func`` to first copy ``in_dict`` and then alter the copied dict to avoid this error. This feature of ``mappingproxy`` is great, as it helps us avoid a whole class of difficult-to-find bugs.
 
 Note though that while ``read_only`` is read-only, it is not immutable, so if you change ``data``, ``read_only`` will change too:
  
@@ -112,7 +112,7 @@ Note though that while ``read_only`` is read-only, it is not immutable, so if yo
     >>> read_only  # changed!
     mappingproxy({'a': 3, 'b': 2, 'c': 4})
 
-This is something to be aware of. See the `docs <https://docs.python.org/3/library/types.html#types.MappingProxyType>`_ for details.
+We see that ``read_only`` is actually a view of the underlying ``dict``, and is not an independent object. This is something to be aware of. See the `docs <https://docs.python.org/3/library/types.html#types.MappingProxyType>`_ for further details.
 
 ``types.SimpleNamespace``
 -------------------------
@@ -132,7 +132,7 @@ This is something to be aware of. See the `docs <https://docs.python.org/3/libra
 
 In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while  it also provides a nice repr output string.
 
-I sometimes use this as an easier-to-read-and-write alternative to ``dict``, or I subclass it to get the flexible instantiation and repr output for free:
+I sometimes use this as an easier-to-read-and-write alternative to ``dict``. More and more though, I subclass it to get the flexible instantiation and repr output for free:
 
 .. code-block :: python
     
@@ -149,7 +149,7 @@ I sometimes use this as an easier-to-read-and-write alternative to ``dict``, or 
     >>> data_bag.choice()
     (b, 2)
     
-This subclassing of  ``types.SimpleNamespace`` is  not revolutionary really, but it can save on a few lines of text in some common cases, which is nice. See the `docs <https://docs.python.org/3/library/types.html#types.SimpleNamespace>`_ for details.
+This subclassing of ``types.SimpleNamespace`` is not revolutionary really, but it can save on a few lines of text in some very common cases, which is nice. See the `docs <https://docs.python.org/3/library/types.html#types.SimpleNamespace>`_ for details.
 
 Conclusion
 ------------
@@ -161,7 +161,3 @@ Translations
 -------------
 
 A `Korean translation of a previous version of this article <https://mnpk.github.io/2017/03/16/python3-data-structure.html>`_ has been made, courtesy of `mnpk <https://mnpk.github.io/about.html>`_. Thanks!
-
-
-.. _birthday: https://www.reddit.com/r/Python/comments/5v0tt6/python_3_created_via_pep_3000_is_exactly_3000/
-.. _typingNamedTuple: https://docs.python.org/3/library/typing.html#typing.NamedTuple
