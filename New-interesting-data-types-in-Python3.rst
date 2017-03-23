@@ -159,7 +159,7 @@ I hope you enjoyed this little walkthrough of some new data structures in Python
 Mentioning in Podcasts
 ----------------------
 
-The article has been positively mentioned on the `Python Bytes <https://pythonbytes.fm/episodes/show/18/python-3-has-some-amazing-types-and-you-can-now-constructively-insult-your-shell>`_ podcast at around 6:00. Thanks!
+The article has been positively mentioned on the `Python Bytes <https://pythonbytes.fm/episodes/show/18/python-3-has-some-amazing-types-and-you-can-now-constructively-insult-your-shell>`_ podcast at around the 6:00 min. mark. Thanks!
 
 Translations
 -------------
