@@ -165,3 +165,6 @@ Translations
 -------------
 
 A `Korean translation of this article <https://mnpk.github.io/2017/03/16/python3-data-structure.html>`_ has been made, courtesy of `mnpk <https://mnpk.github.io/about.html>`_. Thanks!
+
+A `Russian translation of this article <https://github.com/olshevskiy87/Articles-ru>`_ has been made, courtesy of `olshevskiy87 <https://github.com/olshevskiy87>`_. Thanks!
+
