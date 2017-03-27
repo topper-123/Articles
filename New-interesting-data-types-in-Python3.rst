@@ -92,7 +92,7 @@ So, if you want to deliver data dicts to different functions or threads and want
     # in some function/thread:
     >>> my_func(data)
     >>> data
-    data = {'a': 10, 'b':2}  # oops, note that data['a'] now has changed as an side-effect of calling my_threaded_func
+    data = {'a': 10, 'b':2}  # oops, note that data['a'] now has changed as an side-effect of calling my_func
 
 If you send in a ``mappingproxy`` to ``my_func`` instead, however, attempts to change the dict will result in an error:
 
