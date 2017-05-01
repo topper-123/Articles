@@ -10,7 +10,7 @@ We will take a look at ``typing.NamedTuple``, ``types.MappingProxyType`` and ``t
 
 ``typing.NamedTuple`` is a supercharged version of the venerable ``collections.namedtuple`` and while it was added in Python 3.5, it really came into its own in Python 3.6.
 
-In comparions to ``collections.namedtuple``, ``typing.NamedTuple`` gives you (Python >= 3.6):
+In comparison to ``collections.namedtuple``, ``typing.NamedTuple`` gives you (Python >= 3.6):
 
 - nicer syntax
 - inheritance
