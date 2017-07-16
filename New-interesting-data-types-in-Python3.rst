@@ -80,7 +80,9 @@ A ``types.MappingProxyType`` example:
       
 Note that the example shows that the ``read_only`` object cannot be directly changed. 
 
-So, if you want to deliver data dicts to different functions or threads and want to ensure that a function is not changing data that is also used by another function, you can just deliver a ``MappingProxyType`` object to all functions, rather than the original ``dict``, and the data dict now cannot be changed unintentionally. An example illustrates this usage of ``MappingProxyType``:
+So, if you want to deliver data dicts to different functions or threads and want to ensure that a function is not changing data that is also used by another function, you can just deliver a ``MappingProxyType`` object to all functions, rather than the original ``dict``, and the data dict now cannot be changed unintentionally. 
+
+An example can illustrate this issue and how usage of ``MappingProxyType`` can help:
 
 .. code-block :: python
     
