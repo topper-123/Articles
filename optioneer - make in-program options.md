@@ -3,7 +3,7 @@
 These days, Python has a **lot** of choices for creating CLI options:
 * ``argparse``, ``getopt`` and ``optparse`` (deprecated) from the standard library
 *  [click](http://click.pocoo.org/), [docopt](http://docopt.org/) and
-   [many others](http://docs.pyinvoke.org/en/1.2/#the-invoke-cli-tool)
+   [many others](http://docs.pyinvoke.org/en/1.2/#the-invoke-cli-tool) external packages
 
 It is safe to say Python got creating CLI options covered.
 
@@ -57,6 +57,7 @@ Typically, in your package, you'd have a ``config.py`` file, where you set up yo
 
 ```python
     from optioneer import Optioneer
+
     options_maker = Optioneer()
     options_maker.register_option('api_key', 'abcdefg', doc='The API key to our service')
     options_maker.register_option('display.width', 200, doc='Width of our display')
