@@ -158,7 +158,7 @@ option will be removed, that is also possible:
                                 removal_version='v1.3')
 ```
 
-Then accessing the option will show
+Then accessing the ``display.height`` option will show
 
 ```python
  >>> mylib.options.display.height
