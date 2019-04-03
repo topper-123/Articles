@@ -10,7 +10,7 @@ We will take a look at ``typing.NamedTuple``, ``types.MappingProxyType`` and ``t
 
 ``typing.NamedTuple`` is a supercharged version of the venerable ``collections.namedtuple`` and while it was added in Python 3.5, it really came into its own in Python 3.6.
 
-In comparions to ``collections.namedtuple``, ``typing.NamedTuple`` gives you (Python >= 3.6):
+In comparison to ``collections.namedtuple``, ``typing.NamedTuple`` gives you (Python >= 3.6):
 
 - nicer syntax
 - inheritance
@@ -132,7 +132,7 @@ We see that ``read_only`` is actually a view of the underlying ``dict``, and is 
     >>> data
     namespace(a=1, b=2, c=3)
 
-In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while  it also provides a nice repr output string.
+In short, ``types.SimpleNamespace`` is just a ultra-simple class, allowing you to set, change and delete attributes while it also provides a nice repr output string.
 
 I sometimes use this as an easier-to-read-and-write alternative to ``dict``. More and more though, I subclass it to get the flexible instantiation and repr output for free:
 
